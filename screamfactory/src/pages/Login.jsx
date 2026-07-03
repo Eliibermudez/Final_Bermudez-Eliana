@@ -1,10 +1,11 @@
 import { useState, useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../context/AuthContext";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
 
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -12,49 +13,55 @@ function Login() {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const success = login(
-      username,
-      password
-    );
+    if (!username || !password) {
+      setError("Todos los campos son obligatorios");
+      return;
+    }
 
-    if (success) {
-      navigate("/dashboard");
+    const loggedUser = login(username, password);
+
+    if (loggedUser) {
+      if (loggedUser.role === "admin") {
+        navigate("/dashboard");
+      } else {
+        navigate("/missions");
+      }
     } else {
-      alert("Usuario o contraseña incorrectos");
+      setError("Usuario o contraseña incorrectos");
     }
   };
 
   return (
-    <div>
-      <h1>Login</h1>
+    <div className="login-page">
+      <div className="login-card">
+        <h1>Iniciar sesión</h1>
 
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Usuario"
-          value={username}
-          onChange={(e) =>
-            setUsername(e.target.value)
-          }
-        />
+        <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            placeholder="Usuario"
+            value={username}
+            onChange={(e) => {
+              setUsername(e.target.value);
+              setError("");
+            }}
+          />
 
-        <br /><br />
+          <input
+            type="password"
+            placeholder="Contraseña"
+            value={password}
+            onChange={(e) => {
+              setPassword(e.target.value);
+              setError("");
+            }}
+          />
 
-        <input
-          type="password"
-          placeholder="Contraseña"
-          value={password}
-          onChange={(e) =>
-            setPassword(e.target.value)
-          }
-        />
+          {error && <p>{error}</p>}
 
-        <br /><br />
-
-        <button type="submit">
-          Ingresar
-        </button>
-      </form>
+          <button type="submit">Ingresar</button>
+        </form>
+      </div>
     </div>
   );
 }

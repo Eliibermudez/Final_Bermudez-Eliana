@@ -6,11 +6,12 @@
     "role": "admin",
     "name": "Roz"
   },
-  {
-    "id": 2,
-    "username": "mike",
-    "password": "1234",
-    "role": "empleado",
-    "name": "Mike Wazowski"
-  }
+{
+  "id": 2,
+  "username": "mike",
+  "password": "1234",
+  "role": "employee",
+  "name": "Mike Wazowski",
+  "monsterId": 2
+}
 ]

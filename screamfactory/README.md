@@ -1,18 +1,222 @@
-# React + Vite
+# ScreamFactory
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Aplicación web desarrollada con React y Vite inspirada en el universo de Monsters Inc
 
-Currently, two official plugins are available:
+Permite gestionar monstruos, asignar misiones energéticas y visualizar métricas de la fábrica mediante un sistema de autenticación con roles
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+# Alumna:
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+- **Nombre:** Eliana Bermúdez
+- **Carrera:** Analista de Sistemas
+- **Materia:** Plataformas de Desarrollo
+- **Cuatrimestre:** 4° Cuatrimestre
+- **Año:** 2026
 
-Note: This will impact Vite dev & build performances.
+---
 
-## Expanding the Oxlint configuration
+# Descripción del proyecto
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+ScreamFactory es una plataforma de gestión interna para una fábrica de monstruos
+
+La aplicación permite:
+
+- Gestión de monstruos empleados
+- Creación y seguimiento de misiones energéticas
+- Visualización de estadísticas y rankings
+- Acceso según rol de usuario
+
+---
+
+# Tecnologías utilizadas
+
+- React
+- React Router DOM
+- Vite
+- JavaScript
+- CSS3
+- Context API
+- JSON como fuente de datos
+
+---
+
+# Entidades del sistema
+
+## Monstruos
+Representan los empleados de la fábrica
+
+Información:
+
+- Nombre
+- Tipo
+- Energía
+- Estado
+
+## Misiones
+Representan las tareas asignadas a los monstruos
+
+Información:
+
+- Nombre de la misión
+- Monstruo asignado
+- Energía esperada
+- Estado
+
+---
+
+# Roles de usuario
+
+## Roz (Administrador)
+
+Puede:
+
+- Ver todos los monstruos
+- Agregar monstruos
+- Editar monstruos
+- Eliminar monstruos
+- Crear misiones
+- Eliminar misiones
+- Ver todas las misiones
+- Ver estadísticas completas
+
+---
+
+## Mike Wazowski (Empleado)
+
+Puede:
+
+- Consultar monstruos
+- Ver el detalle de los monstruos
+- Ver únicamente las misiones asignadas
+- Consultar el dashboard
+
+No puede:
+
+- Crear monstruos
+- Editar monstruos
+- Eliminar monstruos
+- Crear misiones
+- Eliminar misiones
+
+---
+
+# Usuarios de prueba
+
+## Administrador
+
+Usuario:
+
+```text
+roz
+```
+
+Contraseña:
+
+```text
+1234
+```
+
+---
+
+## Empleado
+
+Usuario:
+
+```text
+mike
+```
+
+Contraseña:
+
+```text
+1234
+```
+
+---
+
+# Funcionalidades implementadas
+
+## Autenticación
+
+- Inicio de sesión
+- Protección de rutas
+- Persistencia de sesión
+
+## Monstruos
+
+- Listado de monstruos
+- Alta de monstruos
+- Edición de monstruos
+- Eliminación de monstruos
+- Vista de detalle
+
+## Misiones
+
+- Listado de misiones
+- Creación de misiones
+- Cambio de estado
+- Eliminación de misiones
+- Filtrado por rol
+
+## Dashboard
+
+- Métricas generales
+- Ranking de energía
+- Estadísticas de la fábrica
+
+## Navegación
+
+- Navbar dinámica
+- Página Home
+- Página 404 
+
+---
+
+
+# Instalación
+
+Clonar el repositorio:
+
+```bash
+git clone <url-del-repositorio>
+```
+
+Ingresar al proyecto:
+
+```bash
+cd screamfactory
+```
+
+Instalar dependencias:
+
+```bash
+npm install
+```
+
+Ejecutar:
+
+```bash
+npm run dev
+```
+
+Abrir:
+
+```text
+http://localhost:5173
+```
+
+---
+
+# Conceptos aplicados
+
+- Componentes reutilizables
+- Hooks (`useState`, `useContext`)
+- React Router
+- Renderizado condicional
+- Formularios controlados
+- Context API
+- Manejo de estados
+- Protección de rutas
+- Diseño responsive básico
+
