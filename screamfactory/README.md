@@ -1,11 +1,3 @@
-# ScreamFactory
-
-Aplicación web desarrollada con React y Vite inspirada en el universo de Monsters Inc
-
-Permite gestionar monstruos, asignar misiones energéticas y visualizar métricas de la fábrica mediante un sistema de autenticación con roles
-
----
-
 # Alumna:
 
 - **Nombre:** Eliana Bermúdez
@@ -16,88 +8,247 @@ Permite gestionar monstruos, asignar misiones energéticas y visualizar métrica
 
 ---
 
-# Descripción del proyecto
+# Descripción del proyecto ScreamFactory
 
-ScreamFactory es una plataforma de gestión interna para una fábrica de monstruos
+Trabajo Final - Plataformas de Desarrollo
 
-La aplicación permite:
-
-- Gestión de monstruos empleados
-- Creación y seguimiento de misiones energéticas
-- Visualización de estadísticas y rankings
-- Acceso según rol de usuario
+ScreamFactory es una aplicación web Full Stack que permite administrar monstruos empleados y gestionar las misiones energéticas asignadas a cada uno. El sistema implementa autenticación mediante JWT y control de acceso por roles, diferenciando las funcionalidades disponibles para administradores y empleados
 
 ---
 
 # Tecnologías utilizadas
 
+## Frontend
+
 - React
 - React Router DOM
-- Vite
-- JavaScript
-- CSS3
 - Context API
-- JSON como fuente de datos
+- Fetch API
+- SweetAlert2
+- CSS3
+- Vite
+
+## Backend
+
+- Node.js
+- Express
+- MongoDB
+- Mongoose
+- JWT (JsonWebToken)
+- bcrypt
+- dotenv
 
 ---
 
-# Entidades del sistema
+# Arquitectura
 
-## Monstruos
-Representan los empleados de la fábrica
+La aplicación sigue una arquitectura cliente-servidor
 
-Información:
+Frontend:
+- React
+- Consumo de API REST mediante Fetch API
+- Context API para autenticación
 
-- Nombre
-- Tipo
-- Energía
-- Estado
+Backend:
+- Express
+- Controladores
+- Modelos Mongoose
+- Middleware
+- API REST
 
-## Misiones
-Representan las tareas asignadas a los monstruos
-
-Información:
-
-- Nombre de la misión
-- Monstruo asignado
-- Energía esperada
-- Estado
+Base de datos:
+- MongoDB
 
 ---
+# Estructura del proyecto
 
-# Roles de usuario
+```
+screamfactory/
+│
+├── backend/
+│   ├── config/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── scripts/
+│   ├── utils/
+│   ├── .env
+│   ├── package.json
+│   ├── package-lock.json
+│   └── server.js
+│
+├── frontend/
+│   ├── public/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── styles/
+│   │   ├── App.jsx│   │   
+│   │   └── main.jsx
+│   ├── .env
+│   ├── .env.example
+│   ├── .oxlintrc.json
+│   ├── .gitignore
+│   ├── index.html
+│   ├── package.json
+│   ├── package-lock.json
+│   └── vite.config.js
+├── screenshots
+└── README.md
 
-## Roz (Administrador)
+```
+---
+
+# Roles del sistema
+
+## Administrador
 
 Puede:
-
-- Ver todos los monstruos
-- Agregar monstruos
-- Editar monstruos
-- Eliminar monstruos
-- Crear misiones
-- Eliminar misiones
-- Ver todas las misiones
-- Ver estadísticas completas
-
----
-
-## Mike Wazowski (Empleado)
-
-Puede:
-
-- Consultar monstruos
-- Ver el detalle de los monstruos
-- Ver únicamente las misiones asignadas
-- Consultar el dashboard
-
-No puede:
 
 - Crear monstruos
 - Editar monstruos
 - Eliminar monstruos
 - Crear misiones
+- Editar misiones
 - Eliminar misiones
+- Consultar dashboard completo
+
+---
+
+## Empleado
+
+Puede:
+
+- Consultar monstruos
+- Buscar monstruos por nombre
+- Consultar detalle de cada monstruo
+- Visualizar las misiones asignadas
+- Marcar sus misiones como completadas
+
+No puede modificar información administrativa
+
+---
+
+# Funcionalidades
+
+## Autenticación
+
+- Login con JWT
+- Persistencia de sesión mediante LocalStorage
+- Protección de rutas privadas
+- Logout
+
+---
+
+## Monstruos
+
+- Alta
+- Edición
+- Eliminación
+- Listado
+- Detalle
+- Búsqueda por nombre
+
+---
+
+## Misiones
+
+- Alta
+- Edición
+- Eliminación
+- Consulta
+- Cambio de estado
+- Visualización según rol
+
+---
+
+## Dashboard
+
+Panel administrativo con:
+
+- Total de monstruos
+- Total de misiones
+- Energía acumulada
+- Ranking del monstruo con mayor energía
+
+---
+
+# Base de datos
+
+MongoDB almacena:
+
+- Usuarios
+- Monstruos
+- Misiones
+
+Las relaciones se implementan mediante referencias de Mongoose
+
+---
+# Variables de entorno
+
+## Backend (.env)
+
+```env
+PORT=3000
+MONGO_URI=mongodb+srv://<usuario>:<password>@cluster.mongodb.net/screamfactory
+JWT_SECRET=tu_clave_jwt
+```
+
+## Frontend (.env)
+
+```env
+VITE_API_URL=http://localhost:3000/api
+```
+
+# Seguridad
+
+El sistema implementa:
+
+- Autenticación mediante JWT
+- Middleware de autenticación
+- Middleware de autorización por roles
+- Encriptación de contraseñas con bcrypt
+- Persistencia de sesión mediante LocalStorage
+- Validaciones en frontend y backend
+
+---
+
+# Instalación
+
+## Backend
+
+```bash
+cd backend
+npm install
+npm run dev
+```
+
+Servidor:
+
+```
+http://localhost:3000
+```
+
+---
+
+## Frontend
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Aplicación:
+
+```
+http://localhost:5173
+```
 
 ---
 
@@ -107,13 +258,13 @@ No puede:
 
 Usuario:
 
-```text
+```
 roz
 ```
 
 Contraseña:
 
-```text
+```
 1234
 ```
 
@@ -123,100 +274,54 @@ Contraseña:
 
 Usuario:
 
-```text
+```
 mike
 ```
 
 Contraseña:
 
-```text
-1234
+```
+4321
 ```
 
 ---
 
-# Funcionalidades implementadas
+# Capturas
 
-## Autenticación
-
-- Inicio de sesión
-- Protección de rutas
-- Persistencia de sesión
-
-## Monstruos
-
-- Listado de monstruos
-- Alta de monstruos
-- Edición de monstruos
-- Eliminación de monstruos
-- Vista de detalle
-
-## Misiones
-
-- Listado de misiones
-- Creación de misiones
-- Cambio de estado
-- Eliminación de misiones
-- Filtrado por rol
-
-## Dashboard
-
-- Métricas generales
-- Ranking de energía
-- Estadísticas de la fábrica
-
-## Navegación
-
-- Navbar dinámica
-- Página Home
-- Página 404 
+- Login
+    ![Login](screenshots/login.png)
+- Home 
+    ![Home](screenshots/home.png)
+- Gestión de monstruos admin 
+    ![monstruos-admin](screenshots/monsters-admin.png)
+- Consulta de monstruos emp
+    ![monstruos-emp](screenshots/monsters-employee.png)     
+- Dashboard admin 
+    ![Dashboard-admin](screenshots/dashboard-admin.png)
+- Dashboard empl
+    ![Dashboard-emp](screenshots/dashboard-employee.png)    
+- Detalle del monstruo
+    ![Detalle](screenshots/monster-detail.png)
+- Gestión de misiones admin
+    ![misiones-admin](screenshots/missions-admin.png)  
+- Consulta de misiones emp
+    ![misiones-emp](screenshots/missions-employee.png)  
+- SweetAlert
+    ![SweetAlert](screenshots/sweetalert.png)    
 
 ---
 
+## Enlaces
 
-# Instalación
+Repositorio GitHub
 
-Clonar el repositorio:
+https://github.com/
 
-```bash
-git clone <url-del-repositorio>
-```
+Frontend publicado
 
-Ingresar al proyecto:
+https://
 
-```bash
-cd screamfactory
-```
+Backend publicado
 
-Instalar dependencias:
-
-```bash
-npm install
-```
-
-Ejecutar:
-
-```bash
-npm run dev
-```
-
-Abrir:
-
-```text
-http://localhost:5173
-```
-
----
-
-# Conceptos aplicados
-
-- Componentes reutilizables
-- Hooks (`useState`, `useContext`)
-- React Router
-- Renderizado condicional
-- Formularios controlados
-- Context API
-- Manejo de estados
-- Protección de rutas
-- Diseño responsive básico
+https://
 
