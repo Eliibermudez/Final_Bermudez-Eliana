@@ -11,7 +11,7 @@ import MonsterDetail from "./pages/MonsterDetail";
 import Missions from "./pages/Missions";
 import NotFound from "./pages/NotFound";
 
-import "./styles/app.css";
+import "./styles/App.css";
 
 function App() {
   return (
