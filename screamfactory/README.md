@@ -313,15 +313,9 @@ Contraseña:
 
 ## Enlaces
 
-Repositorio GitHub
+## Enlaces
 
-https://github.com/
-
-Frontend publicado
-
-https://
-
-Backend publicado
-
-https://
+- **Repositorio GitHub:** <https://github.com/Eliibermudez/Final_Bermudez-Eliana>
+- **Frontend publicado:** <https://final-bermudez-eliana.vercel.app/>
+- **Backend publicado:** <https://finalbermudez-eliana-production.up.railway.app>
 
